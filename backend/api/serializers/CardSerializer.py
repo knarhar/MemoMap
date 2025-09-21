@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from ..models import Card, Category
 
-class CardSerializer(serializers.ModelSerializer):
+class   CardSerializer(serializers.ModelSerializer):
     categories = serializers.ListField(
         child=serializers.CharField(), write_only=True
     )
@@ -9,7 +9,7 @@ class CardSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Card
-        fields = ["id", "title", "description", "categories", "categories_names"]
+        fields = ["id", "title", "description", "categories", "categories_names", 'created']
 
     def get_categories_names(self, obj):
         return [c.name for c in obj.category.all()]

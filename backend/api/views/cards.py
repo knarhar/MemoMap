@@ -64,3 +64,20 @@ class CardsView(APIView):
             return success_response(data=serializer.data)
 
         return error_response(message=serializer.errors)
+
+    def delete(self, request):
+        """
+        Delete a card.
+        :param request:
+        :return:
+        """
+        id = request.data.get("id")
+        if not id:
+            return error_response(message="id is required")
+
+        try:
+            card = Card.objects.get(id=id)
+            card.delete()
+            return success_response(message="Card deleted")
+        except Card.DoesNotExist:
+            return error_response(message="Card not found")

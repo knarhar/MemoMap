@@ -41,6 +41,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
+CORS_ALLOW_METHODS = ["DELETE", "GET", "POST", "OPTIONS", "PUT", "PATCH"]
 # Application definition
 
 INSTALLED_APPS = [
